@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.serializer.Serializer;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 
 import java.util.HashMap;
@@ -29,5 +30,7 @@ public class KafkaProducerConfig {
         return new DefaultKafkaProducerFactory<>(createProducerConfig());
     }
     @Bean
-    public Ka
+    public KafkaTemplate<String, String> kafkaTemplate(ProducerFactory<String, String> producerFactory){
+        return new KafkaTemplate<>(producerFactory);
+    }
 }
