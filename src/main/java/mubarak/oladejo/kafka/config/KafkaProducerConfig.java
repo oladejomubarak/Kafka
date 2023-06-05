@@ -3,6 +3,7 @@ package mubarak.oladejo.kafka.config;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.serializer.Serializer;
@@ -33,4 +34,9 @@ public class KafkaProducerConfig {
     public KafkaTemplate<String, String> kafkaTemplate(ProducerFactory<String, String> producerFactory){
         return new KafkaTemplate<>(producerFactory);
     }
+
+    CommandLineRunner commandLineRunner(KafkaTemplate<String,String> kafkaTemplate){
+        return args -> { kafkaTemplate.send("mubarakcode","hello kafka");
+    };
+}
 }
