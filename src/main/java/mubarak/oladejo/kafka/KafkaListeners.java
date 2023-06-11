@@ -6,10 +6,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class KafkaListeners {
     @KafkaListener(
-            topics = "mubaraktopic",
+            topics = "irespondtopic",
             groupId = "groupId"
     )
-    void listen(String data){
-        System.out.println("Listener received: " +data+ ".");
+    void receive(String data){
+        System.out.println("User received: " +data+ ".");
     }
 }
