@@ -16,7 +16,7 @@ public class MessageController {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public void publish(@RequestBody MessageRequest request){
         kafkaTemplate.send("irespondtopic", request.message());
     }
